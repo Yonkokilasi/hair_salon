@@ -1,7 +1,7 @@
 # Hair_salon
 
 
-Description: 
+Description:
 
 ## Setup
 
@@ -19,6 +19,7 @@ Description:
 * Java
 * Gradle for dependency management and running tasks.
 * Sql Database
+* Deployed to heroku
 
 ## Author
 Yonko Kilasi

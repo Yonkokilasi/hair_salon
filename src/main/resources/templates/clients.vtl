@@ -1,0 +1,17 @@
+<h2>New Client</h2>
+
+<form class="form-control" action="/clients" method="post">
+    <label for="stylistId">Select a stylist</label>
+    <select id="stylistId" name="stlystId" type="text">
+        #foreach($stylist in $stylists)
+            <option value="stylist.getId">$stylist.getName()</option>
+        #end
+    </select>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+    </div>
+    <button type="submit" class="btn btn-success">Add</button>
+</form>
+<a href="/">Go home</a> <br>
+<a href="/stylists">View Stylists</a>

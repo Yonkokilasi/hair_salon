@@ -46,6 +46,12 @@ public class Client {
                 return client;
             }
         }
+        public void delete() {
+            try(Connection con = DB.sql2o.open()) {
+                String sql = "DELTE FROM clients WHERE id = :id;";
+                con.createQuery(sql).addParameter("id",id).executeUpdate();
+            }
+        }
 
 
 }

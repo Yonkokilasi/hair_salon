@@ -42,7 +42,7 @@ public class App {
             model.put("template","templates/client-success.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
-        
+
         // get method for the add new stylist
         get("/stylists", (request, response) -> {
             Map<String, Object> model = new HashMap<String , Object>();
@@ -57,10 +57,16 @@ public class App {
               String name = request.queryParams("name");
               String specialty = request.queryParams("specialty");
               newStylist.save();
-              model.put("template","templates/stylist-success.vtl")
+              model.put("template","templates/stylist-success.vtl");
               return new ModelAndView(model, layout);
             }, new VelocityTemplateEngine());
 
+            get("clients/:id", (request, response)-> {
+                Map<String, Object> model = new HashMap<String,Object>();
+                Client client = Client.find(Integer.parseInt(request.queryParams(":id")));
+                model.put("client",client);
+                model.put("template","templates/clients.vtl");return new ModelAndView(model, layout);
+            },new VelocityTemplateEngine());
 
     }
 

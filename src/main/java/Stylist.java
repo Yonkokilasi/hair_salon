@@ -23,7 +23,7 @@ public class Stylist {
 
     public static List<Stylist> all() {
         String sql = "SELECT id , name , specialty FROM stylists";
-        try(Conection con = DB.sql2o.open()) {
+        try(Connection con = DB.sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(Stylist.class);
         }
     }
@@ -34,11 +34,11 @@ public class Stylist {
 
     public static Stylist find(int id) {
         try(Connection con = DB.sql2o.open()) {
-          String sql = "SELECT * FROM styilsts where id=:id";
-          Stylist Stylist = con.createQuery(sql)
+          String sql = "SELECT * FROM stylists where id=:id";
+          Stylist stylist = con.createQuery(sql)
             .addParameter("id", id)
             .executeAndFetchFirst(Stylist.class);
-          return Stylist;
+          return stylist;
         }
     }
     @Override

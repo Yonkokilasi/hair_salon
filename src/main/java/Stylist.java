@@ -7,12 +7,11 @@ public class Stylist {
     private int id;
     private String specialty;
 
-    public Stylist(String name) {
+    public Stylist(String name, String specialty) {
         this.name = name;
-    }
-    public Stylist(String specialty) {
         this.specialty = specialty;
     }
+
     public String getName() {
         return name;
     }
@@ -34,7 +33,7 @@ public class Stylist {
 
     public static Stylist find(int id) {
         try(Connection con = DB.sql2o.open()) {
-          String sql = "SELECT * FROM stylists where id=:id";
+          String sql = "SELECT * FROM stylists WHERE id=:id";
           Stylist stylist = con.createQuery(sql)
             .addParameter("id", id)
             .executeAndFetchFirst(Stylist.class);
@@ -48,15 +47,16 @@ public class Stylist {
       } else {
         Stylist newStylist = (Stylist) otherStylist;
         return this.getName().equals(newStylist.getName()) &&
-                this.getSpecialty().equals(newStylist.getSpecialty()) && this.getId() == newStylist.getId();
+                this.getSpecialty().equals(newStylist.getSpecialty());
       }
     }
 
      public void save() {
        try(Connection con = DB.sql2o.open()) {
-         String sql = "INSERT INTO stylists(name) VALUES (:name)";
+         String sql = "INSERT INTO stylists(name,specialty) VALUES (:name,:specialty)";
          this.id = (int) con.createQuery(sql, true)
            .addParameter("name", this.name)
+           .addParameter("specialty", this.specialty)
            .executeUpdate()
            .getKey();
        }

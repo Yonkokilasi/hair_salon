@@ -5,6 +5,7 @@ import org.sql2o.*;
 public class Client {
     private String name;
     private int id;
+    private int stylistId;
 
 
     public Client(String name, int stylistId) {
@@ -30,7 +31,7 @@ public class Client {
             return false;
         } else {
             Client newClient = (Client) otherClient;
-            return this.getName().equals(newClient.getName()) && this.getId() == newClient.getId() && this.getStylistId();
+            return this.getName().equals(newClient.getName());
         }
     }
     public void save() {

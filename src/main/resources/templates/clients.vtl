@@ -2,7 +2,7 @@
 
 <form class="form-control" action="/clients" method="post">
     <label for="stylistId">Select a stylist</label>
-    <select id="stylistId" name="stlystId" type="text">
+    <select id="stylistId" name="stylistId" type="text">
         #foreach($stylist in $stylists)
             <option value="stylist.getId">$stylist.getName()</option>
         #end

@@ -3,9 +3,9 @@ import java.util.List;
 import org.sql2o.*;
 
 public class Client {
-    private String name;
-    private int id;
-    private int stylistId;
+    public String name;
+    public int id;
+    public int stylistId;
 
 
     public Client(String name, int stylistId) {

@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import org.sql2o.*;
 
 public class Stylist {
-    private String name;
-    private int id;
-    private String specialty;
+    public String name;
+    public int id;
+    public String specialty;
 
     public Stylist(String name, String specialty) {
         this.name = name;

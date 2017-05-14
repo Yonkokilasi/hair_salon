@@ -21,7 +21,7 @@ public class Stylist {
     }
 
     public static List<Stylist> all() {
-        String sql = "SELECT id , name , specialty FROM stylists";
+        String sql = "SELECT * FROM stylists";
         try(Connection con = DB.sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(Stylist.class);
         }
@@ -53,7 +53,7 @@ public class Stylist {
 
      public void save() {
        try(Connection con = DB.sql2o.open()) {
-         String sql = "INSERT INTO stylists(name,specialty) VALUES (:name,:specialty)";
+         String sql = "INSERT INTO stylists (name,specialty) VALUES (:name,:specialty)";
          this.id = (int) con.createQuery(sql, true)
            .addParameter("name", this.name)
            .addParameter("specialty", this.specialty)
